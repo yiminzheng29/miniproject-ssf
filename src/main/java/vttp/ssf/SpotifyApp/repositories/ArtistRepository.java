@@ -14,11 +14,11 @@ import vttp.ssf.SpotifyApp.models.Artist;
 public class ArtistRepository {
     
     @Autowired @Qualifier ("redislab")
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
-    public void save(Artist artist) {
+    public void save(String name, String payload) {
         ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
-        valueOps.set(artist.getName(), artist.toJson().toString());
+        valueOps.set(name, payload);
     }
 
     public Optional<String> getArtist(String name) {
