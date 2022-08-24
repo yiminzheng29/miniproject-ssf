@@ -10,10 +10,10 @@
     <h1>You searched for <span data-th-text="${name}"></span></h1>
     <div data-th-each="a: ${artist}">
         <h1 data-th-text="${a.name}"></h1>
-        <!-- <h2 data-th-text="${a.popularity}"></h2>
-        <h3 data-th-text="${a.genres}"></h3> -->
+        <h2>Popularity: <span data-th-text="${a.popularity}"></span></h2>
+        <!-- <h3 data-th-text="${a.genres}"></h3> -->
         <a data-th-href="${a.url}">Link to Spotify</a>
-        <h3 data-th-text="${a.url}"></h3>
+        <br>
         <img data-th-src="${a.imageurl}" alt="">
 
     </div>

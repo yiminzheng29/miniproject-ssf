@@ -16,7 +16,7 @@ public class Artist {
     private String name;
     // private String genre;
     private String imageurl;
-    // private String popularity;
+    private Integer popularity;
 
     public String getUrl() {return url;}
     public void setUrl(String url) {this.url = url;}
@@ -30,8 +30,8 @@ public class Artist {
     public String getImageurl() {return imageurl;}
     public void setImageurl(String imageurl) {this.imageurl = imageurl;}
     
-    // public String getPopularity() {return popularity;}
-    // public void setPopularity(String popularity) {this.popularity = popularity;}
+    public Integer getPopularity() {return popularity;}
+    public void setPopularity(Integer popularity) {this.popularity = popularity;}
 
     public static Artist create(String str) {
         Reader r = new StringReader(str);
@@ -53,14 +53,14 @@ public class Artist {
             artist.setImageurl(urlList.get(i));
         }
         artist.setName(jo.getString("name"));
-        // artist.setPopularity(jo.getString("popularity"));
+        artist.setPopularity(jo.getInt("popularity"));
         return artist;
     }
 
     public JsonObject toJson() {
         return Json.createObjectBuilder()
             .add("name", name)
-            // .add("popularity", popularity)
+            .add("popularity", popularity)
             // .add("genres", genre)
             .add("spotify", url)
             .add("url", imageurl)

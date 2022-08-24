@@ -69,13 +69,6 @@ public class ArtistService {
 
         JsonReader jr = Json.createReader(new StringReader(payload));
         JsonObject jo = jr.readObject();
-        // JsonObject newJo = Json.createObjectBuilder()
-        //     .add("name", (jo.getJsonObject("artists")))
-        //     // .add("popularity", (jo.getJsonObject("artists")))
-        //     // .add("genres", (jo.getJsonObject("artists")))
-        //     // .add("spotify", (jo.getJsonObject("artists").getJsonArray("items").getJsonObject(0)))
-        //     // .add("url", (jo.getJsonObject("artists").getJsonArray("images").getJsonObject(0)))
-        //     .build();
         List<Artist> artistList = new LinkedList<>();
         JsonArray jArray = jo.getJsonObject("artists").getJsonArray("items");
         for (int i = 0; i < jArray.size(); i++) {

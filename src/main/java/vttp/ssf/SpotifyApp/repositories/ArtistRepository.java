@@ -8,8 +8,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
-import vttp.ssf.SpotifyApp.models.Artist;
-
 @Repository
 public class ArtistRepository {
     
