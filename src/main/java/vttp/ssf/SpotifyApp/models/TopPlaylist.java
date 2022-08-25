@@ -16,30 +16,18 @@ public class TopPlaylist {
     private String url;
     private String spotifyUrl;
     private String name;
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
-    }
-    public String getSpotifyUrl() {
-        return spotifyUrl;
-    }
-    public void setSpotifyUrl(String spotifyUrl) {
-        this.spotifyUrl = spotifyUrl;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+
+    public String getDescription() {return description;}
+    public void setDescription(String description) {this.description = description;}
+    
+    public String getUrl() {return url;}
+    public void setUrl(String url) {this.url = url;}
+    
+    public String getSpotifyUrl() {return spotifyUrl;}
+    public void setSpotifyUrl(String spotifyUrl) {this.spotifyUrl = spotifyUrl;}
+    
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 
     public static TopPlaylist create(String s) {
         Reader r = new StringReader(s);
