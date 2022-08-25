@@ -10,13 +10,19 @@
     <div>
         <form action="/artist" method="GET">
             Please enter artist name:
-            <input type="text" name="name">
+            <input type="text" name="name" required>
             <br><br>
             Please enter your token:
-            <input type="text" name="token">
+            <input type="text" name="token" required>
             <button type="submit">Go</button>
         </form>
-
+    </div>
+    <div>
+        <form action="/topplaylist" method="GET">
+            Please enter your token:
+            <input type="text" name="token" required>
+            <button type="submit">Go</button>
+        </form>
     </div>
 </body>
 </html>
