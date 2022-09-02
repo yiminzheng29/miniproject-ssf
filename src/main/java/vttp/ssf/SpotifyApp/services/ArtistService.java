@@ -19,6 +19,7 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.ssf.SpotifyApp.models.Artist;
+import vttp.ssf.SpotifyApp.models.Artist2;
 import vttp.ssf.SpotifyApp.repositories.ArtistRepository;
 
 @Service
@@ -76,6 +77,56 @@ public class ArtistService {
             artistList.add(Artist.create(jOb));
         }
         return artistList;
+        
+    } 
+
+    public List<Artist2> loadArtist2(String name, String token) {
+        Optional<String> opt = artistRepo.getArtist(name);
+        String payload;
+
+        // Check if redisDatabase contains artist
+        // If redisDatabase does not contain artist, retrieve info from Spotify API
+        if (opt.isEmpty()) {
+            System.out.printf("Retrieving %s's information from Spotify\n", name);
+            
+            try {
+                String url = UriComponentsBuilder.fromUriString(URL)
+                    .queryParam("q", URLEncoder.encode(name, "UTF-8"))
+                    .queryParam("type", "artist")
+                    .queryParam("access_token", token)
+                    .toUriString();
+
+                // Create GET request, GET URL
+                RequestEntity<Void> req = RequestEntity.get(url).build();
+                
+                // Make the call to SpotifyApp
+                RestTemplate temp = new RestTemplate();
+                ResponseEntity<String> resp = temp.exchange(req, String.class);
+
+                payload = resp.getBody();
+                System.out.println("Payload: "+ payload);
+                artistRepo.save(name, payload);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                return Collections.emptyList();
+            }
+        } else {
+            // Retrieve artist information from redis Database
+            System.out.printf("Retrieving %s's information from redis Database\n", name);
+            payload = opt.get();
+            System.out.println("Cache: " + payload);
+        }
+        
+
+        JsonReader jr = Json.createReader(new StringReader(payload));
+        JsonObject jo = jr.readObject();
+        List<Artist2> artistList2 = new LinkedList<>();
+        JsonArray jArray = jo.getJsonObject("artists").getJsonArray("items");
+        for (int i = 0; i < jArray.size(); i++) {
+            JsonObject jOb = jArray.getJsonObject(i);
+            artistList2.add(Artist2.create(jOb));
+        }
+        return artistList2;
         
     } 
 
