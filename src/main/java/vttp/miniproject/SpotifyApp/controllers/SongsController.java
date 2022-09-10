@@ -5,11 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,16 +34,6 @@ public class SongsController {
         model.addAttribute("query", query);
         return "songs";
     }
-
-    // @GetMapping(path="/songlist")
-    // public String getUser(@RequestParam String username, Model model) {
-
-    //     List<Songs> savedList = accountSvc.getSongs(username);
-    //     model.addAttribute("username", username);
-    //     model.addAttribute("savedlist", savedList);
-
-    //     return "songlist";
-    // }
     
 
     @PostMapping
@@ -62,7 +49,6 @@ public class SongsController {
         }
         accountSvc.saveAcct2(username, newList);
         List<Songs> savedList = accountSvc.getSongs(username);
-        // System.out.println(savedList.toString());
         model.addAttribute("username", username);
         model.addAttribute("password", password);
         model.addAttribute("saved", newList);

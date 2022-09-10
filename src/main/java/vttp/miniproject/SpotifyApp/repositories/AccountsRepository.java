@@ -1,6 +1,5 @@
 package vttp.miniproject.SpotifyApp.repositories;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
-import vttp.miniproject.SpotifyApp.models.Accounts;
 import vttp.miniproject.SpotifyApp.models.Songs;
 
 @Repository
@@ -20,27 +18,10 @@ public class AccountsRepository {
     @Autowired @Qualifier ("redislab")
     private RedisTemplate<String, String> redisTemplate;
 
-    // public void save(Accounts account) {
-    //     ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
-    //     valueOps.set("!"+account.getUsername(), account.getPassword());
-    // }
-
     public void save(String username, String password) {
         ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
         valueOps.set("!"+username, password);
     }
-
-    
-    // public void save2(Accounts account) {
-    //     String username = "!"+ account.getUsername();
-    //     List<Songs> songlist = account.getSonglist();
-    //     ListOperations<String, String> listOps = redisTemplate.opsForList();
-    //     long l = listOps.size(username);
-    //     if (l>0) {
-    //         listOps.trim(username, 0, l);
-    //     }
-    //     listOps.leftPushAll(username, songlist.stream().map(v->v.toJson().toString()).toList());
-    // }
 
     public void save2(String username, List<Songs> songlist) {
         String user = username;

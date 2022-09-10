@@ -34,10 +34,10 @@
             class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
         </div>
         <div class="col-lg-8">
-            <p class="fs-1 text-center fw-bold mb-5">Your Music App</p>
+            <p class="fs-1 text-center fw-bold mb-5">New Account</p>
           <div class="card-body py-5 px-md-5">
             
-            <form action="/account" method="POST">
+            <form action="/signup" method="POST">
               <!-- Username input -->
               <div class="form-outline mb-4">
                 <div class="form-floating mb-3">
@@ -49,20 +49,20 @@
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <div class="form-floating mb-4">
-                    <input type="text" class="form-control" name="password" data-th-value="${password}" required>
+                    <input type="password" class="form-control" name="password" data-th-value="${password}" required>
                     <label for="password">Password:</label>
                 </div>
               </div>
   
               <!-- 2 column grid layout for inline styling -->
-              <div class="row mb-4">
-                <div class="col d-flex justify-content-center">
+              <!-- <div class="row mb-4">
+                <div class="col d-flex justify-content-center"> -->
                   <!-- Checkbox -->
-                  <div class="form-check">
+                  <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
                     <label class="form-check-label" for="form2Example31"> Remember me </label>
                   </div>
-                </div>
+                </div> -->
   
                 <!-- <div class="col"> -->
                   <!-- Simple link -->
@@ -72,7 +72,9 @@
   
               <!-- Submit button -->
               <br><br>
-              <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+              <button type="submit" class="btn btn-primary btn-block mb-4 align-items-center">Create a new Account</button>
+              <br>
+              <a href="/">Back to main page</a>
   
             </form>
   

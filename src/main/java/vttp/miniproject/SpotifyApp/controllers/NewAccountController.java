@@ -27,13 +27,12 @@ public class NewAccountController {
     public String newAcc(@RequestBody MultiValueMap<String, String> form, Model model) {
         String username = form.getFirst("username");
         String password = form.getFirst("password");
-        System.out.println(username);
-        System.out.println(password);
+
         accountSvc.saveAcct(username, password);
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
-        return "/";
+        return "redirect:/success.html";
     }
     
 }

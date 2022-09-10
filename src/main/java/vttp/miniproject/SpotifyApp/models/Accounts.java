@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import jakarta.json.Json;
-import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
@@ -16,7 +15,6 @@ public class Accounts {
     private String password;
     private List<Songs> songlist = new LinkedList<>();
 
-    // public Accounts(String username) {}
 
     public String getUsername() {return username;}
     public void setUsername(String username) {this.username = username;}
@@ -47,20 +45,15 @@ public class Accounts {
         Accounts acct = new Accounts();
         acct.setUsername(jo.getString("username"));
         acct.setPassword(jo.getString("password"));
-        // List<Songs> songlist = jo.getJsonArray("contents").stream().map(v -> (JsonObject)v).map(Songs::create).toList();
-        // acct.setSonglist(songlist);
+
         return acct;
     }
 
     public JsonObject toJson() {
-        // JsonArrayBuilder arr = Json.createArrayBuilder();
-        // songlist.stream()
-		// 	.map(i -> i.toJson())
-		// 	.forEach(i -> arr.add(i));
+
         return Json.createObjectBuilder()
             .add("username", username)
             .add("password", password)
-            // .add("contents", arr)
             .build();
     }
 
