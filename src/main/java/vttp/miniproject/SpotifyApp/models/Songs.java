@@ -42,6 +42,12 @@ public class Songs {
         JsonReader jr = Json.createReader(r);
         return create(jr.readObject());
     }
+
+    public static Songs create2(String s) {
+        Reader r = new StringReader(s);
+        JsonReader jr = Json.createReader(r);
+        return create(jr.readObject());
+    }
     
     public static Songs create(JsonObject jo) {
         Songs song = new Songs();

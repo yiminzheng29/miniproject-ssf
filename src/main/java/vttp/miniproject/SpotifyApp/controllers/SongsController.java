@@ -49,6 +49,7 @@ public class SongsController {
         }
         accountSvc.saveAcct2(username, newList);
         List<Songs> savedList = accountSvc.getSongs(username);
+
         model.addAttribute("username", username);
         model.addAttribute("password", password);
         model.addAttribute("saved", newList);
