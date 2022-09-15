@@ -139,7 +139,6 @@ public class AccountsRepository {
             JsonReader jr = Json.createReader(new StringReader(listOps.index(username, i)));
             JsonObject jo = jr.readObject();
             songlist.add(Songs.create2(jo));
-            
         }
         return songlist;
     }
