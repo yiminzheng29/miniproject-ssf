@@ -23,7 +23,6 @@ public class AccountsService {
     public String verifyAcc(String username, String password) {
         Optional<String> pw = accountsRepo.getAccount(username, password);
         String correctPw = pw.get();
-        // System.out.println(correctPw);
 
         return correctPw;
     }
@@ -32,27 +31,13 @@ public class AccountsService {
         accountsRepo.save(username, password);
     }
 
-
-    // public void saveAcct2(String username, List<Songs> songlist) {
-    //     accountsRepo.save2(username, songlist);
-    // }
-
     public void saveAcct2(String username, List<Songs> songlist) {
         accountsRepo.save2(username, songlist);
     }
 
-    // public List<Songs> getSongs(String name) {
-    //     Optional<List<String>> user = accountsRepo.get(name);
-    //     List<String> list = user.get();
-    //     List<Songs> songlist = new LinkedList<>();
-
-    //     for (int i = 0; i < list.size(); i++) {
-    //         JsonReader jr = Json.createReader(new StringReader(list.get(i)));
-    //         JsonObject jo = jr.readObject();
-    //         songlist.add(Songs.create2(jo));
-    //     }
-    //     return songlist;
-    // }
+    public void saveAcct3(String username, List<Songs> songlist) {
+        accountsRepo.save3(username, songlist);
+    }
 
     public List<Songs> getSongs(String name) {
         return accountsRepo.getSonglist(name);

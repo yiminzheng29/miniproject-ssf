@@ -20,13 +20,16 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        /* button, input[type="submit"] {
+            background:url(/img/bin.png) no-repeat;
+        } */
     </style>
         <ul class="nav nav-tabs">
           <li class="nav-item">
               <a class="nav-link" href="/">Logout</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/account/{username}(username=${username})}">Your Account</a>
+            <a class="nav-link" th:href="@{/account/{username}(username=${username})}">Search for Songs</a>
           </li>
           <li class="nav-item">
               <a class="nav-link active" aria-current="page" th:href="@{/songlist/{username}(username=${username})}">Your Playlist</a>
@@ -51,7 +54,14 @@
                 <div class="row g-0">
                   <div class="col-md-4">
                     <br><br>
+
                     <img data-th-src="${s.picture_medium}" class="img-fluid rounded-start" alt="...">
+                    <form action="/songlist" method="POST">
+                      <input type="hidden" name="username" data-th-value="${username}">
+                      <!-- <input type="submit" name="delete" data-th-value="${s.id}" value="Delete"> -->
+                      <input type="hidden" name="delete" data-th-value="${s.id}">
+                      <button type="submit">Delete</button>
+                    </form>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">

@@ -74,9 +74,8 @@ public class AccountsRepository {
     // }
 
     public void save2(String username, List<Songs> songlist) {
-        String user = username;
         ListOperations<String, String> listOps = redisTemplate.opsForList();
-        long l = listOps.size(user);
+        long l = listOps.size(username);
 
         
         if (l>0) {
@@ -111,6 +110,28 @@ public class AccountsRepository {
             }
         }
     }
+
+    public void save3(String username, List<Songs> songlist) {
+        ListOperations<String, String> listOps = redisTemplate.opsForList();
+        long l = listOps.size(username);
+
+            // List<Songs> savedList = new LinkedList<>();
+            // // List<Songs> tobesavedList = new LinkedList<>();
+            // for (int i = 0; i < listOps.size(username); i++) {
+            //     JsonReader jr = Json.createReader(new StringReader(listOps.index(username, i)));
+            //     JsonObject jo = jr.readObject();
+            //     savedList.add(Songs.create2(jo));
+            // }
+
+            for (Long i = listOps.size(username); i > 0; i--) {
+                listOps.rightPop(username);
+            }
+
+            for (Songs ss: songlist) {
+                listOps.rightPush(username, ss.toJson().toString());
+            }
+        }
+    
 
     public Optional<String> getAccount(String username, String password) {
         ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
