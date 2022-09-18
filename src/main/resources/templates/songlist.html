@@ -80,5 +80,8 @@
                 </div>
               </div>
             </div>
+          <div class="text-center" data-th-if="${empty}">
+            <h4>Your songlist is empty. Click <a th:href="@{/account/{username}(username=${username})}">here</a> to start searching for songs!</h4>
+          </div>
 </body>
 </html>

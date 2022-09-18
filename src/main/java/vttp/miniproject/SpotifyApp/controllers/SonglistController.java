@@ -29,6 +29,7 @@ public class SonglistController {
         List<Songs> savedList = accountSvc.getSongs(username);
         model.addAttribute("username", username);
         model.addAttribute("savedlist", savedList);
+        model.addAttribute("empty", savedList.isEmpty());
 
         return "songlist";
     }
@@ -50,6 +51,8 @@ public class SonglistController {
         model.addAttribute("savedlist", newList);
         model.addAttribute("username", username);
         model.addAttribute("delete", IDtoDelete);
+        model.addAttribute("empty", newList.isEmpty());
+
         return "songlist";
     }
 }
