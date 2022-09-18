@@ -1,16 +1,12 @@
 package vttp.miniproject.SpotifyApp.services;
 
-import java.io.StringReader;
-import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.json.Json;
-import jakarta.json.JsonObject;
-import jakarta.json.JsonReader;
 import vttp.miniproject.SpotifyApp.models.Songs;
 import vttp.miniproject.SpotifyApp.repositories.AccountsRepository;
 

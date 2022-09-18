@@ -113,7 +113,6 @@ public class AccountsRepository {
 
     public void save3(String username, List<Songs> songlist) {
         ListOperations<String, String> listOps = redisTemplate.opsForList();
-        long l = listOps.size(username);
 
             // List<Songs> savedList = new LinkedList<>();
             // // List<Songs> tobesavedList = new LinkedList<>();
